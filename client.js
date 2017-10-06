@@ -3,7 +3,7 @@ var debug = require('debug')('localtunnel:client');
 
 var Tunnel = require('./lib/Tunnel');
 
-module.exports = function localtunnel(port, opt, fn) {
+function localtunnel(port, opt, fn) {
     if (typeof opt === 'function') {
         fn = opt;
         opt = {};
@@ -22,3 +22,7 @@ module.exports = function localtunnel(port, opt, fn) {
     });
     return client;
 };
+
+localtunnel(80, { local_host: 'vimeo.dev', local_port: '80' }, () => {
+    console.log('back');
+});
